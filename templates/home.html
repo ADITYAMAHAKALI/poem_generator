@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='home.css')}}">
+</head>
+<body>
+    <nav>
+        <h1>Poem Generator</h1>
+    </nav>
+    <form action="" method="post">
+        <label for="">Enter the theme for your poems </label>
+        <input type="text" name="theme">
+        <label for="">Enter the number of verses in each poem </label>
+        <input type="text" name="verses">
+        <br />
+        <button type="submit" name="submit_button" value="Generate Poem">Generate Poem</button>
+    </form>
+    
+    <div class="poems">
+        {% if theme %}
+            <h2>For the theme : {{ theme }}</h2>
+        {% endif %}
+        {% if poems %}
+            {% for poem in poems %}
+                <div class="poem"  >
+                    <h2> {{ poem[0] }}</h2>
+                    <br>
+                    <p style="white-space: pre-line">{{ poem[1] }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+   
+</html>
